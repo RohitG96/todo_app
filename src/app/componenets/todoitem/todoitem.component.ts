@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Todo } from '../../models/Todo'
+import { TemplatePortalDirective } from '@angular/cdk/portal';
+
 
 @Component({
   selector: 'app-todoitem',
@@ -6,10 +9,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./todoitem.component.css']
 })
 export class TodoitemComponent implements OnInit {
-
+  @Input() todo:Todo;
+  checked:boolean = false;
   constructor() { }
 
   ngOnInit() {
+    this.checked = this.todo.completed;
+
   }
 
 }
