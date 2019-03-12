@@ -7,4 +7,5 @@ export class Todo{
     desc:string;
     title:string;
     deleted?:false;
+    due_date:Date
 }

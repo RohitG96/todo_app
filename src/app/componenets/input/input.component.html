@@ -1,0 +1,4 @@
+<nz-input-group nzCompact>
+  <input type="text" nz-input [ngModel]="'input content'" style="width:50%;">
+  <nz-date-picker [(ngModel)]="date" (ngModelChange)="onChange($event)" nzPlaceHolder="completion date"></nz-date-picker>
+</nz-input-group>

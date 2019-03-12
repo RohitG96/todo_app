@@ -9,11 +9,15 @@ import { TodolistServicesService } from 'src/app/todolist-services.service';
 })
 export class TodosComponent implements OnInit {
   todos: Todo[];
-
+  renderInputComponent: boolean = false;
   constructor(private _todolist: TodolistServicesService) { }
 
   ngOnInit() {
     this.todos = this._todolist.getTodos()
+  }
+
+  onAdd = (e:any) => {
+    this.renderInputComponent = true;
   }
 
 }

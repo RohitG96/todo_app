@@ -11,7 +11,13 @@
 <br/>
 <br/>
 <div nz-row style="text-align: center">
-  <div nz-col>
-      <button nz-button nzType="primary" [nzSize]="size"><i nz-icon type="plus" theme="outline"></i>Add task</button>
+  <div nz-col (click)="onAdd()">
+      <button nz-button nzType="primary" [nzSize]="size" ><i nz-icon type="plus" theme="outline"></i>Add task</button>
   </div>
 </div>
+
+<div nz-row *ngIf="renderInputComponent" style="text-align: center">
+    <app-input>
+      
+    </app-input>
+  </div>

@@ -10,27 +10,30 @@ export class TodolistServicesService {
   constructor() {
     this.todos = [
       {
-        id: 1,
+        id: 0,
         created_at: new Date(),
         updated_at: new Date(),
         desc: "perform x y z",
         title: "task1",
-        completed: true
+        completed: true,
+        due_date: new Date(),
       },
       {
         id: 1,
         created_at: new Date(),
         updated_at: new Date(),
         desc: "perform x y z",
-        title: "task2"
+        title: "task2",
+        due_date: new Date()
       },
       {
-        id: 1,
+        id: 2,
         created_at: new Date(),
         updated_at: new Date(),
         desc: "perform x y z",
         title: "task3",
-        completed: true
+        completed: true,
+        due_date: new Date()
       }
     ]
   }

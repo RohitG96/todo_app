@@ -12,6 +12,7 @@ import { NgZorroAntdModule, NZ_I18N, en_US } from 'ng-zorro-antd';
 import { registerLocaleData } from '@angular/common';
 import { TodolistServicesService } from "./todolist-services.service";
 import en from '@angular/common/locales/en';
+import { InputComponent } from './componenets/input/input.component';
 registerLocaleData(en);
 
 
@@ -19,7 +20,8 @@ registerLocaleData(en);
   declarations: [
     AppComponent,
     TodosComponent,
-    TodoitemComponent
+    TodoitemComponent,
+    InputComponent
   ],
   imports: [
     BrowserModule,
