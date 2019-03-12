@@ -1,3 +1,36 @@
-<label nz-checkbox [(ngModel)]="checked">
-{{todo.title}}
-</label>
+<!-- <nz-row><nz-collapse>
+      <nz-collapse-panel [nzHeader]="todo.title" [nzActive]="false" [nzDisabled]="true">
+        <p style="margin:0;">A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.</p>
+      </nz-collapse-panel>
+</nz-collapse>>
+</nz-row> -->
+<nz-collapse>
+  <nz-collapse-panel [nzHeader]="todo.title" nzStyle="customStyle"
+   [nzActive]="!checked" [nzDisabled]="!checked" >
+   <div nz-row>
+   <div nz-col nzSpan='10' style="text-align:center">
+      <h2>{{todo.desc}}</h2>
+    </div>
+    <div nz-col nzSpan='6' style="text-align:center">
+       <h2>{{todo.created_at | date:'short'}}</h2>
+     </div>
+     <div nz-col nzSpan='6' style="text-align:center">
+        <h2>{{todo.updated_at | date:'short'}}</h2>
+      </div>
+    </div>
+  <div nz-row>
+        <div nz-col nzSpan='6' nzOffset='10' style="text-align:center">
+           <h2><i nz-icon type="check" theme="outline"></i> Mark as completed</h2>
+         </div>
+         <div nz-col nzSpan='6' style="text-align:center">
+            <h2><i nz-icon type="delete" theme="outline"></i> Delete</h2>
+          </div>
+   </div>
+    </nz-collapse-panel>
+  </nz-collapse>
+
+      <!-- "`<div nz-row>
+      <div nz-col nzspan='12'>
+        <h2>{{todo.desc}}</h2>
+      </div>
+    </div>`" -->

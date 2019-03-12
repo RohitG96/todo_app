@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgZorroAntdModule, NZ_I18N, en_US } from 'ng-zorro-antd';
 import { registerLocaleData } from '@angular/common';
+import { TodolistServicesService } from "./todolist-services.service";
 import en from '@angular/common/locales/en';
 registerLocaleData(en);
 
@@ -32,7 +33,7 @@ registerLocaleData(en);
   bootstrap: [ AppComponent ],
   /** config ng-zorro-antd i18n (language && date) **/
   providers   : [
-    { provide: NZ_I18N, useValue: en_US }
+    { provide: NZ_I18N, useValue: en_US }, TodolistServicesService
   ]
 })
 export class AppModule { }

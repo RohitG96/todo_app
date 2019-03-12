@@ -1,6 +1,17 @@
-<ul *ngFor="let todo of todos">
-  <app-todoitem [todo]="todo">
-  </app-todoitem>
-
-</ul>
-git
+<div nz-row>
+  <div nz-col nzSpan="12" nzOffset="6">
+    <nz-list [nzDataSource]="todos" [nzRenderItem]="item" [nzItemLayout]="'horizontal'">
+      <ng-template #item let-item>
+        <app-todoitem [todo]="item">
+        </app-todoitem>
+      </ng-template>
+    </nz-list>
+  </div>
+</div>
+<br/>
+<br/>
+<div nz-row style="text-align: center">
+  <div nz-col>
+      <button nz-button nzType="primary" [nzSize]="size"><i nz-icon type="plus" theme="outline"></i>Add task</button>
+  </div>
+</div>
