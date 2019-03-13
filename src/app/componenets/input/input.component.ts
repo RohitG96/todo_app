@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Todo } from "../../models/Todo";
-import { isTemplateRef } from 'ng-zorro-antd';
+import { TodolistServicesService } from 'src/app/todolist-services.service';
 
 @Component({
   selector: 'app-input',
@@ -8,31 +8,25 @@ import { isTemplateRef } from 'ng-zorro-antd';
   styleUrls: ['./input.component.css']
 })
 export class InputComponent implements OnInit {
-  @Input() length:number = 0;
-  @Output() valueChange = new EventEmitter();
-  due_date:Date;
-  title: string = "";
-  desc:string = "";
-  item: Todo;
+  @Output() addTask = new EventEmitter();
+  item: Todo = new Todo();
 
 
-  constructor() { }
+  constructor(private _todolist: TodolistServicesService) { }
 
   ngOnInit() {
   }
 
-  onChange = (e:any) => {
-    console.log(e)
-    this.due_date = e
-  } 
-
-  onSave = (e:any) => {
-    this.item.id = this.length;
-    this.item.desc = this.desc;
-    this.item.title = this.title;
+  onSave = (desc:any, title:any, date:Date) => {
+    this.item.id = this._todolist.todos.length;
+    this.item.desc = desc;
+    this.item.title = title;
     this.item.created_at = new Date();
     this.item.updated_at = new Date(); 
-    this.valueChange.emit(this.item)
+    this.item.due_date = date;
+    console.log(this.item)
+    console.log(this._todolist.addTodos(this.item))
+    this.addTask.emit(true)
     
   }
 

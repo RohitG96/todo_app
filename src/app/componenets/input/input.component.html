@@ -1,4 +1,22 @@
-<nz-input-group nzCompact>
-  <input type="text" nz-input [ngModel]="'input content'" style="width:50%;">
-  <nz-date-picker [(ngModel)]="date" (ngModelChange)="onChange($event)" nzPlaceHolder="completion date"></nz-date-picker>
-</nz-input-group>
+<div nz-row style="text-align: center">
+  <div nz-col nzSpan='9' nzOffset='6' style="text-align:center">
+    <input #title type="text" nz-input placeholder="Enter title" style="text-align:center">
+  </div>
+  <div nz-col nzSpan='3' style="text-align:center">
+    <nz-date-picker #dueDate nzPlaceHolder="Due date">
+    </nz-date-picker>
+  </div>
+</div>
+
+<div nz-row>
+  <div nz-col nzSpan='12' nzOffset='6'>
+    <textarea nz-input #description placeholder="Enter task description" [(ngModel)]="value"
+      [nzAutosize]="{ minRows: 2, maxRows: 6 }"></textarea>
+  </div>
+</div>
+<div nz-row style="text-align: center">
+  <div nz-col>
+    <button nz-button class="save-btn" (click)="onSave(description.value, title.value, dueDate.nzValue.nativeDate)" nzType="primary"
+      [nzSize]="size"><i nz-icon type="check" theme="outline"></i>Save task</button>
+  </div>
+</div>

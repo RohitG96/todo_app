@@ -1,23 +1,46 @@
-<div nz-row>
-  <div nz-col nzSpan="12" nzOffset="6">
-    <nz-list [nzDataSource]="todos" [nzRenderItem]="item" [nzItemLayout]="'horizontal'">
-      <ng-template #item let-item>
-        <app-todoitem [todo]="item">
-        </app-todoitem>
-      </ng-template>
-    </nz-list>
-  </div>
-</div>
-<br/>
-<br/>
 <div nz-row style="text-align: center">
-  <div nz-col (click)="onAdd()">
-      <button nz-button nzType="primary" [nzSize]="size" ><i nz-icon type="plus" theme="outline"></i>Add task</button>
+  <div nz-col nzSpan='12' nzOffset='6' style="text-align:center">
+    <h1> Todos </h1>
   </div>
 </div>
 
-<div nz-row *ngIf="renderInputComponent" style="text-align: center">
-    <app-input>
-      
-    </app-input>
+<div nz-row>
+  <div nz-col nzSpan="12" nzOffset="6">
+    <div *ngFor="let item of todos; let i=index">
+      <app-todoitem [todo]="item" (complete)="changeTodos($event)" (delete)="changeTodos($event)">
+      </app-todoitem>
+    </div>
   </div>
+</div>
+<br />
+<br />
+<div nz-row style="text-align: center">
+  <div nz-col>
+    <button (click)="onAdd()" nz-button nzType="primary" [nzSize]="size"><i nz-icon type="plus" theme="outline"></i>Add
+      task</button>
+  </div>
+</div>
+
+<div *ngIf="renderInputComponent">
+  <app-input (addTask)="changeTodos($event)">
+
+  </app-input>
+</div>
+
+<br/>
+<br/>
+
+<div nz-row style="text-align: center">
+  <div nz-col nzSpan='12' nzOffset='6' style="text-align:center">
+    <h1> Completed </h1>
+  </div>
+</div>
+
+<div nz-row>
+  <div nz-col nzSpan="12" nzOffset="6">
+    <div *ngFor="let item of completedTodos; let i=index">
+      <app-todoitem [todo]="item" (complete)="changeTodos($event)" (delete)="changeTodos($event)">
+      </app-todoitem>
+    </div>
+  </div>
+</div>

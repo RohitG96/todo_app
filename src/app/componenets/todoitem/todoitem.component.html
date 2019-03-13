@@ -1,36 +1,32 @@
-<!-- <nz-row><nz-collapse>
-      <nz-collapse-panel [nzHeader]="todo.title" [nzActive]="false" [nzDisabled]="true">
-        <p style="margin:0;">A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.</p>
-      </nz-collapse-panel>
-</nz-collapse>>
-</nz-row> -->
 <nz-collapse>
-  <nz-collapse-panel [nzHeader]="todo.title" nzStyle="customStyle"
-   [nzActive]="!checked" [nzDisabled]="!checked" >
-   <div nz-row>
-   <div nz-col nzSpan='10' style="text-align:center">
-      <h2>{{todo.desc}}</h2>
-    </div>
-    <div nz-col nzSpan='6' style="text-align:center">
-       <h2>{{todo.created_at | date:'short'}}</h2>
-     </div>
-     <div nz-col nzSpan='6' style="text-align:center">
+  <nz-collapse-panel [nzHeader]="index" [nzActive]="!checked" [nzDisabled]="!checked">
+    <ng-template #index let-index>
+      <h2> {{todo.title}} <span style="float:right"><b>Due Date:</b>{{todo.due_date | date:'mediumDate'}}</span></h2>
+
+    </ng-template>
+    <div nz-row>
+      <div nz-col nzSpan='10' style="text-align:center">
+        <h2> <b>Task Description:</b></h2>
+        <h2>{{todo.desc}}</h2>
+      </div>
+      <div nz-col nzSpan='6' style="text-align:center">
+        <h2> <b>Created at:</b></h2>
+
+        <h2>{{todo.created_at | date:'short'}}</h2>
+      </div>
+      <div nz-col nzSpan='6' style="text-align:center">
+        <h2> <b>Updated at:</b></h2>
+
         <h2>{{todo.updated_at | date:'short'}}</h2>
       </div>
     </div>
-  <div nz-row>
-        <div nz-col nzSpan='6' nzOffset='10' style="text-align:center">
-           <h2><i nz-icon type="check" theme="outline"></i> Mark as completed</h2>
-         </div>
-         <div nz-col nzSpan='6' style="text-align:center">
-            <h2><i nz-icon type="delete" theme="outline"></i> Delete</h2>
-          </div>
-   </div>
-    </nz-collapse-panel>
-  </nz-collapse>
-
-      <!-- "`<div nz-row>
-      <div nz-col nzspan='12'>
-        <h2>{{todo.desc}}</h2>
+    <div nz-row>
+      <div *ngIf='!todo.completed' nz-col nzSpan='6' nzOffset='10' style="text-align:center">
+        <h2 (click)="onComplete()" class='pointer' href="#" ><font color="#AFA2FF"><i nz-icon type="check" theme="outline"></i> Mark as completed</font></h2>
       </div>
-    </div>`" -->
+      <div nz-col nzSpan='6' [nzOffset]="!todo.completed ? '0': '16'" style="text-align:center">
+        <h2 (click)="onDelete()" class='pointer' href="#"><font color="#710000"><i nz-icon type="delete" theme="outline"></i> Delete this task</font></h2>
+      </div>
+    </div>
+  </nz-collapse-panel>
+</nz-collapse>

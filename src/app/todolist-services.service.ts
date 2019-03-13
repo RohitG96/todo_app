@@ -13,7 +13,7 @@ export class TodolistServicesService {
         id: 0,
         created_at: new Date(),
         updated_at: new Date(),
-        desc: "perform x y z",
+        desc: "perform x y gbajdnklflkljflkkjkllkirjlknkjjhghjbjnjb  uhiufhubkj uhiuhekuheuhffksugukhfuihu nk  j ieihsknfkesuyg egf egfuhsiunkjsnu uhinlkskhfbskjndjkbcsndkjsbcueunckjsn          uhuenkjnsknz",
         title: "task1",
         completed: true,
         due_date: new Date(),
@@ -44,8 +44,10 @@ export class TodolistServicesService {
     this.todos.push(todo)
   }
   removeTodo(id:number){
-    this.todos = this.todos.filter((value:Todo, index:number, arr:[])=>{
-      return value.id != id;
-    })
+    this.todos[id].deleted=true
+    }
+  completedTodo(id:number){
+    this.todos[id].completed=true
   }
+
 }

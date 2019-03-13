@@ -6,6 +6,6 @@ export class Todo{
     updated_at:Date;
     desc:string;
     title:string;
-    deleted?:false;
+    deleted?:boolean;
     due_date:Date
 }

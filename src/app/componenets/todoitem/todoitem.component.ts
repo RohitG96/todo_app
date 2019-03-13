@@ -1,6 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Todo } from '../../models/Todo'
-import { TemplatePortalDirective } from '@angular/cdk/portal';
+import { TodolistServicesService } from 'src/app/todolist-services.service';
 
 
 @Component({
@@ -10,36 +10,24 @@ import { TemplatePortalDirective } from '@angular/cdk/portal';
 })
 export class TodoitemComponent implements OnInit {
   @Input() todo:Todo;
+  @Output() complete = new EventEmitter();
+  @Output() delete = new EventEmitter();
   checked:boolean = false;
-  title:any = `<h2>{{todo.title}}<h2>`
-  panels:any [];
-  customStyle:any = {
-      'margin-top': '0',
-      'color': 'rgba(0,0,0,.85)',
-      'font-weight': '500',
-  }
-  constructor() { }
+  offset:string="16";
+  constructor(private _todolist: TodolistServicesService) { }
 
   ngOnInit() {
     this.checked = true;
-    // this.panels = [
-    //   {
-    //     active    : true,
-    //     name      : 'This is panel header 1',
-    //     disabled  : false
-    //   },
-    //   {
-    //     active  : false,
-    //     disabled: false,
-    //     name    : 'This is panel header 2'
-    //   },
-    //   {
-    //     active  : false,
-    //     disabled: true,
-    //     name    : 'This is panel header 3'
-    //   }
-    // ];
+  }
 
+  onDelete = () => {
+    this._todolist.removeTodo(this.todo.id);
+    this.delete.emit(true)
+  }
+
+  onComplete = () => {
+    this._todolist.completedTodo(this.todo.id);
+    this.complete.emit(true)
   }
 
 }
